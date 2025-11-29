@@ -15,17 +15,28 @@ int	main(void)
 int    ft_print_combn(int n)
 {
     int digits[10];
-    int i;
+    int last;
 
+    /* Step 1: validate n immediately */
+    if (n <= 0 || n >= 10)
+        return (0);
+	
+	last = n - 1;
 	ft_first_group(digits, n);
+	
 
-	ft_print_digits(digits, n);
-
-//	if (0 < n && n < 10)
- 
+	while (1)
+	{
+		if (digits[last] < 10)
+		{
+			ft_print_digits(digits, n);
+			digits[last] = digits[last] + 1;
+		
+			write(1, "\n", 1);
+		}
+	}
 
 }
-////////////////////////
 
 
 
@@ -56,3 +67,5 @@ void	ft_print_digits(int digits[], int n)
 		i++;
 	}
 }
+
+
